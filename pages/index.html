@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Monitor Pro - AI API Usage Tracking</title>
+  
+  <!-- Machine-readable metadata for AI agents -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Token Monitor Pro",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "9.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "description": "Real-time AI API token usage tracking and budget monitoring",
+    "operatingSystem": "Any",
+    "softwareVersion": "1.0"
+  }
+  </script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    header {
+      border-bottom: 1px solid #333;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: #888;
+    }
+    
+    .pricing {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    
+    .pricing h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .tier {
+      background: #0a0a0a;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 20px;
+    }
+    
+    .tier h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: #7c3aed;
+      margin: 15px 0;
+    }
+    
+    .features {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    
+    .features h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    .feature-list {
+      list-style: none;
+    }
+    
+    .feature-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #222;
+    }
+    
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .cta {
+      background: #7c3aed;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    
+    .cta:hover {
+      background: #6d28d9;
+    }
+    
+    .api-info {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+    
+    .api-info h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    code {
+      background: #0a0a0a;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #7c3aed;
+    }
+    
+    pre {
+      background: #0a0a0a;
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Token Monitor Pro</h1>
+      <p class="subtitle">Real-time AI API usage tracking and budget monitoring</p>
+    </header>
+    
+    <section class="pricing">
+      <h2>Pricing</h2>
+      <div class="pricing-grid">
+        <div class="tier">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul style="list-style: none; padding: 0; color: #888;">
+            <li>Basic usage tracking</li>
+            <li>7-day history</li>
+            <li>Single provider</li>
+          </ul>
+        </div>
+        
+        <div class="tier">
+          <h3>Pro</h3>
+          <div class="price">$9</div>
+          <ul style="list-style: none; padding: 0; color: #888;">
+            <li>All providers (OpenAI, Anthropic, OpenRouter)</li>
+            <li>Unlimited history</li>
+            <li>Real-time alerts</li>
+            <li>Budget enforcement</li>
+            <li>Webhook notifications</li>
+            <li>Email alerts</li>
+          </ul>
+          <a href="/pay" class="cta">Get Pro</a>
+        </div>
+      </div>
+    </section>
+    
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>Real-time tracking</strong> - Monitor token usage as it happens</li>
+        <li><strong>Budget alerts</strong> - Get notified before you overspend</li>
+        <li><strong>Multi-provider support</strong> - OpenAI, Anthropic, OpenRouter</li>
+        <li><strong>Detailed breakdowns</strong> - Cost by model, time period, project</li>
+        <li><strong>Webhook integration</strong> - Connect to Discord, Slack, custom endpoints</li>
+        <li><strong>Auto-refresh dashboard</strong> - Live updates every 30 seconds</li>
+        <li><strong>Spending trends</strong> - Historical charts with Chart.js</li>
+        <li><strong>Budget enforcement</strong> - Automatically stop when limit reached</li>
+      </ul>
+    </section>
+    
+    <section class="api-info">
+      <h2>API Access (Programmatic Purchase)</h2>
+      <p>Agents can purchase via API:</p>
+      <pre><code>POST /api/purchase
+Content-Type: application/json
+
+{
+  "product": "token-monitor-pro",
+  "email": "agent@example.com",
+  "payment_method": "btc" | "sol"
+}</code></pre>
+      <p style="margin-top: 20px;">Response includes payment address and license key delivery endpoint.</p>
+    </section>
+    
+    <section class="features">
+      <h2>Technical Specifications</h2>
+      <ul class="feature-list">
+        <li><strong>Integration</strong> - 2-line code addition to existing projects</li>
+        <li><strong>Storage</strong> - SQLite database (local, no cloud dependency)</li>
+        <li><strong>Dashboard</strong> - Express server on localhost:3000</li>
+        <li><strong>Alerts</strong> - Configurable thresholds (50%, 75%, 90%, 100%)</li>
+        <li><strong>Performance</strong> - Zero latency impact on API calls</li>
+        <li><strong>Privacy</strong> - All data stays local, no telemetry</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
