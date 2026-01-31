@@ -18,58 +18,51 @@
       margin-bottom: 20px; border: 1px solid #333;
     }
     .price { font-size: 36px; font-weight: 700; color: #7c3aed; margin: 15px 0; }
-    .form-group { margin: 20px 0; }
-    label { display: block; margin-bottom: 8px; color: #ccc; font-size: 14px; }
-    input {
-      width: 100%; padding: 12px; background: #0a0a0a; border: 1px solid #444;
-      border-radius: 6px; color: #fff; font-size: 16px;
+    .payment-section {
+      background: #1a1a1a; border-radius: 12px; padding: 24px;
+      margin: 20px 0; border: 1px solid #333;
     }
-    input:focus { outline: none; border-color: #7c3aed; }
-    .payment-buttons { display: flex; gap: 15px; margin-top: 25px; }
-    button {
-      flex: 1; padding: 15px; background: #7c3aed; border: none;
-      border-radius: 6px; color: #fff; font-size: 16px; font-weight: 600;
-      cursor: pointer; transition: background 0.2s;
-    }
-    button:hover { background: #6d28d9; }
-    .bitcoin { background: #f7931a; }
-    .bitcoin:hover { background: #e08316; }
-    .solana { background: #14F195; color: #000; }
-    .solana:hover { background: #00D084; }
-    #payment-modal {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9); z-index: 1000; padding: 20px;
-      overflow-y: auto;
-    }
-    .modal-content {
-      max-width: 500px; margin: 50px auto; background: #1a1a1a;
-      border-radius: 12px; padding: 30px; border: 1px solid #333;
-    }
-    .qr-code { text-align: center; margin: 25px 0; }
-    .qr-code img { max-width: 300px; border-radius: 8px; }
+    .payment-section h3 { color: #fff; margin-bottom: 15px; }
+    .qr-code { text-align: center; margin: 20px 0; }
+    .qr-code img { max-width: 200px; border-radius: 8px; background: white; padding: 10px; }
     .address-box {
       background: #0a0a0a; padding: 15px; border-radius: 6px;
-      word-break: break-all; font-family: monospace; font-size: 14px;
-      margin: 15px 0; border: 1px solid #444;
+      word-break: break-all; font-family: monospace; font-size: 12px;
+      margin: 15px 0; border: 1px solid #444; color: #7c3aed;
     }
     .copy-btn {
-      width: 100%; padding: 10px; background: #333; margin-top: 10px;
+      width: 100%; padding: 12px; background: #7c3aed; border: none;
+      border-radius: 6px; color: #fff; font-weight: 600; cursor: pointer;
+      margin-top: 10px; transition: background 0.2s;
     }
-    .close-btn {
-      background: #dc2626; margin-top: 20px;
+    .copy-btn:hover { background: #6d28d9; }
+    .amount { 
+      font-size: 20px; color: #7c3aed; margin: 15px 0; 
+      padding: 12px; background: #0a0a0a; border-radius: 6px;
+      text-align: center; font-weight: 600;
     }
-    .close-btn:hover { background: #b91c1c; }
-    .instructions { color: #888; font-size: 14px; line-height: 1.6; margin: 15px 0; }
     .warning {
       background: #dc262620; border: 1px solid #dc2626; border-radius: 6px;
       padding: 15px; margin: 20px 0; color: #fca5a5; font-size: 14px;
     }
+    .instructions { color: #888; font-size: 14px; line-height: 1.8; margin: 15px 0; }
+    .email-box {
+      background: #0a0a0a; padding: 15px; border-radius: 6px;
+      margin: 15px 0; border: 1px solid #444;
+    }
+    .email-box input {
+      width: 100%; padding: 10px; background: #1a1a1a; border: 1px solid #444;
+      border-radius: 6px; color: #fff; font-size: 14px;
+    }
+    .email-box input:focus { outline: none; border-color: #7c3aed; }
+    .bitcoin-color { color: #f7931a; }
+    .solana-color { color: #14F195; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Purchase Token Monitor Pro</h1>
-    <p class="subtitle">One-time payment, lifetime access</p>
+    <p class="subtitle">One-time payment • Lifetime access • No subscriptions</p>
     
     <div class="product-card">
       <h2>Token Monitor Pro</h2>
@@ -82,107 +75,74 @@
         <li>✓ Webhook notifications</li>
       </ul>
     </div>
-    
-    <div class="form-group">
-      <label for="email">Email (for license key delivery)</label>
-      <input type="email" id="email" placeholder="you@example.com" required>
+
+    <div class="email-box">
+      <label style="display: block; margin-bottom: 8px; color: #ccc; font-size: 14px;">
+        Your email (for license key delivery)
+      </label>
+      <input type="email" id="email" placeholder="you@example.com">
+    </div>
+
+    <div class="warning">
+      <strong>⚡ Manual Processing:</strong> Send payment to one of the addresses below. 
+      Email <strong>atlas@tokenmonitor.pro</strong> with your transaction ID and the email 
+      you entered above. License key delivered within 24 hours.
     </div>
     
-    <div class="payment-buttons">
-      <button class="bitcoin" onclick="createPayment('btc')">Pay with Bitcoin</button>
-      <button class="solana" onclick="createPayment('sol')">Pay with Solana</button>
-    </div>
-  </div>
-  
-  <div id="payment-modal">
-    <div class="modal-content">
-      <h2 id="modal-title">Pay with Bitcoin</h2>
+    <!-- Bitcoin Payment -->
+    <div class="payment-section">
+      <h3><span class="bitcoin-color">₿</span> Pay with Bitcoin</h3>
       
       <div class="qr-code">
-        <img id="qr-image" src="" alt="Payment QR Code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:bc1qkalujvjhu24s8dthqdwnzlqd0wr3v9ywvw0smj?amount=0.00015" 
+             alt="Bitcoin QR Code">
       </div>
       
-      <div class="address-box" id="payment-address"></div>
-      <button class="copy-btn" onclick="copyAddress()">Copy Address</button>
+      <div class="amount">0.00015 BTC (~15,000 sats)</div>
+      
+      <div class="address-box" id="btc-address">bc1qkalujvjhu24s8dthqdwnzlqd0wr3v9ywvw0smj</div>
+      <button class="copy-btn" onclick="copyAddress('btc')">Copy Bitcoin Address</button>
       
       <div class="instructions">
-        <strong>Amount to send:</strong>
-        <div id="payment-amount" style="font-size: 18px; color: #7c3aed; margin: 10px 0;"></div>
+        Send <strong>exactly 0.00015 BTC</strong> (15,000 satoshis) to the address above.
+      </div>
+    </div>
+    
+    <!-- Solana Payment -->
+    <div class="payment-section">
+      <h3><span class="solana-color">◎</span> Pay with Solana</h3>
+      
+      <div class="qr-code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=solana:H4M7ZHVzmBghvPyMkbPZtnJ1i1MSk2buUg2eShgJVqez?amount=0.07" 
+             alt="Solana QR Code">
       </div>
       
-      <div class="warning">
-        Send the EXACT amount shown. Do not round. We monitor the blockchain and will send your license key to <strong id="customer-email"></strong> once payment is confirmed.
-      </div>
+      <div class="amount">0.07 SOL</div>
+      
+      <div class="address-box" id="sol-address">H4M7ZHVzmBghvPyMkbPZtnJ1i1MSk2buUg2eShgJVqez</div>
+      <button class="copy-btn" onclick="copyAddress('sol')">Copy Solana Address</button>
       
       <div class="instructions">
-        Payment typically confirms in 10-60 minutes. You'll receive your license key via email once confirmed.
+        Send <strong>exactly 0.07 SOL</strong> to the address above.
       </div>
-      
-      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+
+    <div class="instructions" style="text-align: center; padding: 20px 0;">
+      Questions? Email <a href="mailto:atlas@tokenmonitor.pro" style="color: #7c3aed;">atlas@tokenmonitor.pro</a>
     </div>
   </div>
   
   <script>
-    let currentPaymentId = null;
-    
-    async function createPayment(currency) {
-      const email = document.getElementById('email').value;
-      
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email address');
-        return;
-      }
-      
-      try {
-        const response = await fetch('/api/payment/create', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            product: 'token-monitor-pro',
-            email: email
-          })
-        });
-        
-        const data = await response.json();
-        
-        if (!data.success) {
-          alert('Error creating payment: ' + data.error);
-          return;
-        }
-        
-        currentPaymentId = data.paymentId;
-        
-        const paymentData = currency === 'btc' ? data.btc : data.sol;
-        
-        document.getElementById('modal-title').textContent = 
-          currency === 'btc' ? 'Pay with Bitcoin' : 'Pay with Solana';
-        document.getElementById('qr-image').src = paymentData.qr;
-        document.getElementById('payment-address').textContent = paymentData.address;
-        document.getElementById('payment-amount').textContent = 
-          currency === 'btc' 
-            ? `${paymentData.amountBTC} BTC (${paymentData.amount} sats)`
-            : `${paymentData.amount} SOL`;
-        document.getElementById('customer-email').textContent = email;
-        
-        document.getElementById('payment-modal').style.display = 'block';
-        
-      } catch (err) {
-        alert('Error: ' + err.message);
-      }
-    }
-    
-    function copyAddress() {
-      const address = document.getElementById('payment-address').textContent;
+    function copyAddress(currency) {
+      const address = document.getElementById(currency + '-address').textContent;
       navigator.clipboard.writeText(address);
       
-      const btn = document.querySelector('.copy-btn');
-      const original = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = original, 2000);
-    }
-    
-    function closeModal() {
-      document.getElementById('payment-modal').style.display = 'none';
+      event.target.textContent = 'Copied!';
+      setTimeout(() => {
+        event.target.textContent = currency === 'btc' 
+          ? 'Copy Bitcoin Address' 
+          : 'Copy Solana Address';
+      }, 2000);
     }
   </script>
 </body>
